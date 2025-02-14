@@ -7,15 +7,30 @@
         body {
             display: flex;
             justify-content: center; 
-            align-items: center;
+            align-items: center; 
             height: 100vh; 
             margin: 0; 
             text-align: center; 
+            background-image: url('https://github.com/TLRKFXE/TLRKFXE.github.io/blob/main/scen.jpg?raw=true'); 
+            background-size: cover; 
+            background-position: center;
+            filter: blur(8px); 
+            position: absolute; 
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+       
+        .content {
+            position: relative;
+            z-index: 1; 
         }
     </style>
 </head>
 <body>
-    <div>
+    <div class="content">
         <h1>Welcome!</h1>
         <img src="董事长.png" width="300" height="300">
     </div>
