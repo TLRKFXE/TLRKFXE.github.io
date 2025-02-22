@@ -25,11 +25,6 @@
             50% { border-color: orange; }
         }
 
-        @keyframes glow {
-            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 20px rgba(255,165,0,0.5); }
-            to { text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 30px rgba(255,165,0,0.8); }
-        }
-
         body {
             display: flex;
             justify-content: center;
@@ -69,50 +64,90 @@
         .content {
             position: relative;
             z-index: 2;
-            width: 100%;
+            /* perspective: 1000px; */
+            width: 50%;
             height: 100vh;
         }
 
-        .content a {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 150px;
-            height: 150px;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            transform-origin: top right;
-        }
-
         .content img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
             cursor: pointer;
             transition: all 0.3s ease;
+            transform-style: preserve-3d;
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
-            border-radius: 15% 50% 15% 50% / 30% 15% 50% 15%;
+            transition: all 0.3s ease, border-radius 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
+
+        .content a {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 150px;  
+        height: 150px;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform-origin: top right;
+    }
 
         .content img:hover {
             transform: scale(1.05) rotateZ(5deg);
             filter: brightness(1.1) drop-shadow(0 5px 15px rgba(0,0,0,0.3));
         }
 
+         /* 移动端适配 */
+    @media (max-width: 768px) {
+        .content a {
+            top: 10px;
+            right: 10px;
+            width: 100px;
+            height: 100px;
+        }
+    }
+
         h1 {
             font-family: 'Comic Sans MS', cursive;
-            color: #fff;
-            font-size: 4em;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            margin: 0;
-            white-space: nowrap;
-            animation: 
-                typing 3.5s steps(40, end),
-                blink-caret .75s step-end infinite,
-                glow 2s ease-in-out infinite alternate;
+        color: #fff;
+        text-shadow: 
+            2px 2px 4px rgba(0,0,0,0.5),
+            0 0 20px rgba(255,165,0,0.5); 
+        font-size: 4em;
+        overflow: hidden;
+        border-right: .15em solid orange;
+        white-space: nowrap;
+        margin: 0;
+        
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+        animation: 
+            typing 3.5s steps(40, end), 
+            blink-caret .75s step-end infinite,
+            glow 2s ease-in-out infinite alternate;
         }
+
+        @keyframes glow {
+        from {
+            text-shadow: 
+                2px 2px 4px rgba(0,0,0,0.5),
+                0 0 20px rgba(255,165,0,0.5);
+        }
+        to {
+            text-shadow: 
+                2px 2px 8px rgba(0,0,0,0.8),
+                0 0 30px rgba(255,165,0,0.8);
+        }
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2.5em;
+            top: 40%;
+            white-space: normal; /* 允许换行 */
+            text-align: center;
+            width: 90%; /* 增加宽度限制 */
+        }
+    }
 
         .mouse-follower {
             position: absolute;
@@ -130,21 +165,7 @@
 
         .jump-animation {
             animation: jump 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5em;
-                white-space: normal;
-                text-align: center;
-                width: 90%;
-            }
-            .content a {
-                width: 100px;
-                height: 100px;
-                top: 10px;
-                right: 10px;
-            }
+            border-radius: 15px !important;
         }
     </style>
 </head>
@@ -157,45 +178,56 @@
 
     <div class="content">
         <h1>无法预测的命运之舞台</h1>
+        
         <a href="joke.html" id="mainImage">
-            <img src="猎鹰.gif" alt="米奇">
+            <img src="猎鹰.gif" width="300" height="300" alt="米奇">
         </a>
     </div>
 
     <script>
+        // 鼠标跟随效果
         document.addEventListener('DOMContentLoaded', () => {
             const follower = document.createElement('div');
             follower.className = 'mouse-follower';
             document.body.appendChild(follower);
 
             document.addEventListener('mousemove', (e) => {
-                follower.style.left = `${e.clientX}px`;
-                follower.style.top = `${e.clientY}px`;
-                
-                const img = document.querySelector('.content img');
-                const rect = img.getBoundingClientRect();
-                const centerX = rect.left + rect.width/2;
-                const centerY = rect.top + rect.height/2;
-                const rotateX = (e.clientY - centerY) * 0.03;
-                const rotateY = (centerX - e.clientX) * 0.03;
-                img.style.transform = `scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            });
+        const img = document.querySelector('.content img');
+        const rect = img.getBoundingClientRect();
+        const centerX = rect.left + rect.width/2;
+        const centerY = rect.top + rect.height/2;
+        const rotateX = (e.clientY - centerY) * 0.03;
+        const rotateY = (centerX - e.clientX) * 0.03;
+        img.style.transform = `scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
 
-            document.getElementById('mainImage').addEventListener('click', function(e) {
-                e.preventDefault();
-                const img = this.querySelector('img');
-                img.classList.add('jump-animation');
-                setTimeout(() => {
-                    window.location.href = this.href;
-                }, 800);
-            });
-
-            const sounds = ['mickey_laugh1.mp3', 'mickey_laugh2.mp3'];
-            document.querySelector('.content img').addEventListener('click', () => {
-                const audio = new Audio(sounds[Math.floor(Math.random() * sounds.length)]);
-                audio.play();
-            });
+        // 点击跳跃动画
+        document.getElementById('mainImage').addEventListener('click', function(e) {
+            e.preventDefault();
+            const img = this.querySelector('img');
+            img.classList.add('jump-animation');
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 800);
         });
+
+        // 随机播放音效
+        const sounds = ['mickey_laugh1.mp3', 'mickey_laugh2.mp3'];
+        document.querySelector('.content img').addEventListener('click', () => {
+            const audio = new Audio(sounds[Math.floor(Math.random() * sounds.length)]);
+            audio.play();
+        });
+
+        function createSnow() {
+    const snow = document.createElement('div');
+    snow.innerHTML = '❄️';
+    snow.style.position = 'absolute';
+    snow.style.left = Math.random() * 100 + '%';
+    snow.style.animation = `fall ${Math.random()*3+5}s linear infinite`;
+    document.body.appendChild(snow);
+}
+setInterval(createSnow, 300);
+
     </script>
 </body>
 </html>
