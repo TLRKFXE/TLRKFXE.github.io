@@ -36,16 +36,27 @@
             position: relative;
             z-index: 1; 
         }
+
+        .content img {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .content img:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
 
     <div class="background"></div>
 
-
     <div class="content">
         <h1>Welcome!</h1>
-        <img src="董事长.png" width="300" height="300">
+
+        <a href="joke.html">
+            <img src="董事长.png" width="300" height="300">
+        </a>
     </div>
+
 </body>
-</html>
