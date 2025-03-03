@@ -1,4 +1,5 @@
 /* styles.css */
+/* 固定定位导航栏 */
 nav {
     position: fixed;
     top: 0;
@@ -8,6 +9,7 @@ nav {
     padding: 15px 0px;
 }
 
+/* 水平菜单布局 */
 nav ul {
     list-style: none;
     margin: 0;
@@ -17,6 +19,7 @@ nav ul {
     gap: 100px;
 }
 
+/* 菜单项样式 */
 nav a {
     color: #fff;
     text-decoration: none;
@@ -26,42 +29,25 @@ nav a {
     transition: all 0.3s ease;
 }
 
+/* 悬停交互效果 */
 nav a:hover {
     background: rgba(255, 255, 255, 0.2);
     color: #ffd700;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-
-@keyframes backgroundAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: orange; }
-}
-
+/* 文字发光 */
 @keyframes glow {
     from { text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 20px rgba(255,165,0,0.5); }
     to { text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 30px rgba(255,165,0,0.8); }
 }
 
+/* 跳跃动画 */
 @keyframes jump {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-50px); }
 }
 
+ /* 主容器 */
 body {
     display: flex;
     justify-content: center;
@@ -75,16 +61,9 @@ body {
     animation: backgroundAnimation 15s ease infinite;
 }
 
-.floating-cloud {
-    position: absolute;
-    opacity: 0.3;
-    animation: float 6s ease-in-out infinite;
-}
+/* 动态背景待补充，随机背景待补充 */
 
-.floating-cloud:nth-child(1) { left: 10%; top: 20%; width: 80px; }
-.floating-cloud:nth-child(2) { right: 15%; top: 40%; width: 100px; animation-delay: -2s; }
-.floating-cloud:nth-child(3) { left: 30%; bottom: 30%; width: 60px; animation-delay: -4s; }
-
+/* 背景图片层 */
 .background {
     position: absolute;
     top: 0;
@@ -98,6 +77,7 @@ body {
     z-index: -1;
 }
 
+/* 主要内容容器 */
 .content {
     position: relative;
     z-index: 2;
@@ -105,6 +85,7 @@ body {
     height: 100vh;
 }
 
+/* 神鹰图标容器 */
 .content a {
     position: absolute;
     top: 20px;
@@ -115,6 +96,7 @@ body {
     transform-origin: top right;
 }
 
+ /* 动态图标效果 */
 .content img {
     width: 100%;
     height: 100%;
@@ -125,11 +107,13 @@ body {
     border-radius: 15% 50% 15% 50% / 30% 15% 50% 15%;
 }
 
+
 .content img:hover {
     transform: scale(1.05) rotateZ(5deg);
     filter: brightness(1.1) drop-shadow(0 5px 15px rgba(0,0,0,0.3));
 }
 
+/* 标题特效 */
 h1 {
     font-family: 'Comic Sans MS', cursive;
     color: #fff;
@@ -146,6 +130,7 @@ h1 {
         glow 2s ease-in-out infinite alternate;
 }
 
+/* 鼠标跟随光效 */
 .mouse-follower {
     position: absolute;
     width: 50px;
@@ -155,10 +140,12 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
+/* 点击跳跃动画 */
 .jump-animation {
     animation: jump 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/* 移动端适配 */
 @media (max-width: 768px) {
     h1 {
         font-size: 2.5em;
