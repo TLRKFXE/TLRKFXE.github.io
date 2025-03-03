@@ -3,6 +3,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* 重置所有元素的默认边距和填充
+使用border-box盒模型（元素尺寸包含边框和内边距） */
 
 body {
   display: flex;
@@ -11,6 +13,9 @@ body {
   min-height: 100vh;
   background-color: #1b1b1b;
 }
+/* 使用flex布局使内容垂直水平居中
+设置黑色背景
+确保body至少占满整个视口高度 */
 
 .container {
   position: relative;
@@ -20,6 +25,10 @@ body {
   justify-content: center;
   border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
+/* 创建相对定位的容器
+设置固定高度和全宽
+底部添加半透明白色边框（模拟地平线）
+ */
 
 .container .cloud {
   position: relative;
@@ -30,6 +39,9 @@ body {
   filter: drop-shadow(8px 8px 0 #0005);
   animation: animateCloud 2s steps(1) infinite;
 }
+/* 创建云朵主体形状（椭圆形）
+使用drop-shadow滤镜创建立体投影效果
+应用动画效果（2秒循环） */
 
 @keyframes animateCloud {
   0% {
@@ -40,6 +52,10 @@ body {
   }
 
 }
+/* 创建闪电效果
+通过brightness(10)实现瞬间高亮
+使用双drop-shadow增强立体感
+ */
 
 .container .cloud::before {
   content: '';
@@ -61,6 +77,9 @@ body {
   border-radius: 100px;
   z-index: 1000;
 }
+/* ::before创建左侧圆形凸起和右侧阴影凸起
+::after覆盖主云颜色为深灰色
+通过z-index确保覆盖层级 */
 
 .container .cloud .drop {
   position: absolute;
@@ -86,3 +105,6 @@ body {
     transform: translateY(360px) scaleY(0) scaleX(15);
   }
 }
+/* 雨滴下落动画持续2秒
+下落过程中保持形状
+最后阶段模拟水滴落地时的形变和扩散 */
