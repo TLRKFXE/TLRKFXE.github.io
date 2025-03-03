@@ -1,0 +1,143 @@
+/* styles.css */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes backgroundAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+}
+
+@keyframes glow {
+    from { text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 20px rgba(255,165,0,0.5); }
+    to { text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 30px rgba(255,165,0,0.8); }
+}
+
+@keyframes jump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-50px); }
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+    background-size: 400% 400%;
+    animation: backgroundAnimation 15s ease infinite;
+}
+
+.floating-cloud {
+    position: absolute;
+    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-cloud:nth-child(1) { left: 10%; top: 20%; width: 80px; }
+.floating-cloud:nth-child(2) { right: 15%; top: 40%; width: 100px; animation-delay: -2s; }
+.floating-cloud:nth-child(3) { left: 30%; bottom: 30%; width: 60px; animation-delay: -4s; }
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://github.com/TLRKFXE/TLRKFXE.github.io/blob/main/img/侵删.jpg?raw=true');
+    background-size: cover;
+    background-position: center;
+    filter: blur(1px);
+    z-index: -1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+}
+
+.content a {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 150px;
+    height: 150px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: top right;
+}
+
+.content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+    border-radius: 15% 50% 15% 50% / 30% 15% 50% 15%;
+}
+
+.content img:hover {
+    transform: scale(1.05) rotateZ(5deg);
+    filter: brightness(1.1) drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+}
+
+h1 {
+    font-family: 'Comic Sans MS', cursive;
+    color: #fff;
+    font-size: 4em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    white-space: nowrap;
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite,
+        glow 2s ease-in-out infinite alternate;
+}
+
+.mouse-follower {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+.jump-animation {
+    animation: jump 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+        white-space: normal;
+        text-align: center;
+        width: 90%;
+    }
+    .content a {
+        width: 100px;
+        height: 100px;
+        top: 10px;
+        right: 10px;
+    }
+}
