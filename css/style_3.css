@@ -13,6 +13,7 @@
     overflow: hidden;
     background: #000;  /* 加载时的背景色 */
     z-index: -1;
+    user-select: none;/* 用户无法选取 */
 }
 
 /* 图片项通用样式 */
@@ -89,14 +90,14 @@ nav a:hover {
 }
 
 h1 {
+
     position: absolute;
     top: 40%;
-    left: 20%;
+    left: 22%;
     margin: 0;
     
     user-select: none;/* 用户无法选取 */
     white-space: nowrap;
-        margin: auto;
                 text-align: center;
                 line-height: 100px;
                 font-size: 100px;
@@ -141,20 +142,52 @@ h1::before{
 }
 
 h2 {
-    font-family: 'Comic Sans MS', cursive;
-    color: #3a5613;
-    font-size: 2em;
     position: absolute;
     top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 38%;
     margin: 0;
-    white-space: nowrap;
-    animation: 
-        typing 3.5s steps(40, end),
-        blink-caret .75s step-end infinite,
-        glow 2s ease-in-out infinite alternate;
-    z-index: 3;/* 设置层级高于动画 */
+    
     user-select: none;/* 用户无法选取 */
+    white-space: nowrap;
+                text-align: center;
+                line-height: 100px;
+                font-size: 50px;
+                background-image: linear-gradient(to bottom,#13FAED,#f831a9);
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                -webkit-text-stroke: 1px white;
+     
 }
 
+h2::before{
+    content: '请左转，来生酒吧';
+    position: absolute;
+    left: 1px;
+    z-index: -1;
+    text-shadow:
+    6px 6px #f131f8,
+    5.75px 5.75px #f131f8,
+    5.5px 5.5px #f131f8,
+    5.25px 5.25px #f131f8,
+    5px 5px #f131f8,
+    4.75px 4.75px #f131f8,
+    4.5px 4.5px #f131f8,
+    4.25px 4.25px #f131f8,
+    4px 4px #f131f8,
+    3.75px 3.75px #f131f8,
+    3.5px 3.5px #f131f8,
+    3.25px 3.25px #f131f8,
+    3px 3px #f131f8,
+    2.75px 2.75px #f131f8,
+    2.5px 2.5px #f131f8,
+    2.25px 2.25px #f131f8,
+    2px 2px #f131f8,
+    1.75px 1.75px #f131f8,
+    1.5px 1.5px #f131f8,
+    1.25px 1.25px #f131f8,
+    1px 1px #f131f8,
+    0.75px 0.75px #f131f8,
+    0.5px 0.5px #f131f8,
+    0.25px 0.25px #f131f8;
+}
