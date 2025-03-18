@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      # 挂载本地 Web 文件到容器（注意 Windows 路径转换）
+      - "D:\\Create Project\\VS Project\\TLRKFXE.github.io:/usr/share/nginx/html"
+      # 挂载 Nginx 配置
+      - "./nginx/conf.d:/etc/nginx/conf.d"
