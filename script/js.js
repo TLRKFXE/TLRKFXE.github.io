@@ -106,54 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     new Slideshow('slideshow', config);
 });
 
-
-
-/* 
-document.addEventListener('DOMContentLoaded', () => {
-    const audio = document.getElementById('bgm');
-    const musicBtn = document.getElementById('musicBtn');
-
-    // 自动播放处理
-    const handleAutoplay = () => {
-        audio.muted = true; // 初始静音以绕过限制
-        audio.play()
-            .then(() => {
-                // 用户首次点击页面时解除静音
-                const unmute = () => {
-                    audio.muted = false;
-                    document.body.removeEventListener('click', unmute);
-                }
-                document.body.addEventListener('click', unmute, { once: true });
-            })
-            .catch(error => console.log('自动播放被阻止:', error));
-    };
-
-    // 播放/暂停切换
-    musicBtn.addEventListener('click', () => {
-        audio.paused ? audio.play() : audio.pause();
-        musicBtn.classList.toggle('playing');
-        
-        // 动态光效增强
-        musicBtn.style.filter = audio.paused 
-            ? 'hue-rotate(0deg)' 
-            : 'hue-rotate(45deg) drop-shadow(0 0 25px #f831a9)';
-    });
-
-    // 音频状态同步
-    audio.addEventListener('play', () => {
-        musicBtn.classList.add('playing');
-        musicBtn.style.backgroundSize = '55%'; // 播放时图标微缩
-    });
-
-    audio.addEventListener('pause', () => {
-        musicBtn.classList.remove('playing');
-        musicBtn.style.backgroundSize = '60%'; // 恢复默认大小
-    });
-
-    // 初始化自动播放
-    handleAutoplay();
-}); */
-
+// 新增背景音乐播放器
 
 document.addEventListener('DOMContentLoaded', () => {
     // 音乐列表配置
@@ -224,3 +177,12 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => audio.src = getRandomMusic(), 3000);
     });
 });
+
+
+// 新增预加载逻辑（在音乐列表后添加）
+const preloadMusic = () => {
+    musicList.forEach(url => {
+        new Audio(url).preload = 'metadata';
+    });
+};
+preloadMusic();
