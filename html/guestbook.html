@@ -64,5 +64,31 @@
 
     <script src="../script/guestbook.js"></script>
     <script src="../script/Music.js"></script>
+
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBAanZTX2HrlZ8jtnMmWfnfEuzQticnPws",
+          authDomain: "tlrk-a05f7.firebaseapp.com",
+          projectId: "tlrk-a05f7",
+          storageBucket: "tlrk-a05f7.firebasestorage.app",
+          messagingSenderId: "292577422330",
+          appId: "1:292577422330:web:bf78b1d1432d7cb5f31243",
+          measurementId: "G-TC4SQ6D0ZP"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
 </body>
 </html>
