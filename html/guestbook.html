@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>来生 - 伤心千叶城</title>
+    <link rel="stylesheet" href="../css/guestbook.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/Music.css">
+</head>
+<body >
+    <nav>
+        <ul>
+          <li><a href="https://tlrkfxe.github.io">主页</a></li>
+          <li><a href="https://tlrkfxe.github.io/html/articles.html">神经漫游</a></li>
+          <li><a href="https://tlrkfxe.github.io/html/guestbook.html">来生</a></li>
+        </ul>
+    </nav>
+
+    <!-- 悬浮音乐控制器 -->
+    <div class="cyber-player">
+        <audio id="bgm" autoplay loop>
+            <source src="audio/Never Meant.mp3" type="audio/mpeg">
+        </audio>
+        <button class="cyber-btn" id="musicBtn"></button>
+    </div>
+
+    <!-- 留言内容区 -->
+    <main class="cyber-main">
+        <div class="neon-container">
+            <h1 class="glitch-text" data-text="神经漫游者协议">神经漫游者协议</h1>
+            
+            <form class="neuro-form" id="messageForm">
+                <div class="input-field">
+                    <label>IDENTITY:</label>
+                    <input type="text" class="hologram-input" id="userInput" required>
+                    <div class="scanline"></div>
+                </div>
+                
+                <div class="input-field">
+                    <label>MESSAGE:</label>
+                    <textarea class="hologram-input" id="messageInput" rows="4" required></textarea>
+                    <div class="scanline"></div>
+                </div>
+
+                <button type="submit" class="cyber-button">
+                    <span class="btn-text">上传至超梦网络</span>
+                    <div class="neon-border"></div>
+                </button>
+            </form>
+
+            <div class="message-archive" id="messageArchive">
+                <!-- 动态加载留言 -->
+                <div class="message-item">
+                    <div class="user-signal">
+                        <span class="user-id">Ghost_In_Shell</span>
+                        <span class="timestamp">[2077-03-14 23:59]</span>
+                    </div>
+                    <p class="message-content">// 千叶城的雨是否永远不停歇？</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../script/guestbook.js"></script>
+    <script src="../script/Music.js"></script>
+</body>
+</html>

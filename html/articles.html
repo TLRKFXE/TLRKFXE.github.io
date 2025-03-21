@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神经漫游 - 伤心千叶城</title>
+    <link rel="stylesheet" href="../css/articles.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/Music.css">
+</head>
+<body>
+    <nav>
+        <ul>
+          <li><a href="https://tlrkfxe.github.io">主页</a></li>
+          <li><a href="https://tlrkfxe.github.io/html/articles.html">神经漫游</a></li>
+          <li><a href="https://tlrkfxe.github.io/html/guestbook.html">来生</a></li>
+        </ul>
+    </nav>
+
+    <!-- 悬浮音乐控制器 -->
+    <div class="cyber-player">
+        <audio id="bgm" autoplay loop>
+            <source src="audio/Never Meant.mp3" type="audio/mpeg">
+        </audio>
+        <button class="cyber-btn" id="musicBtn"></button>
+    </div>
+    
+    <main class="markdown-container">
+        <div id="article-list" class="cyber-list"></div>
+        <article id="article-content" class="markdown-body"></article>
+    </main>
+
+    <!-- 基础脚本 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../script/Music.js"></script>
+    <!-- 文章页专用脚本 -->
+    <script type="module" src="../script/articles.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+/* 新增音乐播放器样式 */
+.cyber-player {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1001;
+    filter: drop-shadow(0 0 15px #f831a9);
+}
+
+.cyber-btn {
+    width: 80px;
+    height: 80px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background: 
+        radial-gradient(circle at 30% 30%, 
+            rgba(19,250,237,0.8) 0%,
+            rgba(248,49,168,0.6) 100%),
+        url('music-icon.png') center/60% no-repeat;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* 霓虹光效 */
+.cyber-btn::before,
+.cyber-btn::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    border: 2px solid #13FAED;
+    animation: neonGlow 1.5s infinite alternate;
+}
+
+.cyber-btn::after {
+    border-color: #f831a9;
+    animation-delay: -0.5s;
+}
+
+/* 播放状态 */
+.cyber-btn.playing {
+    background-image: url('pause-icon.png');
+    filter: hue-rotate(45deg);
+}
+
+/* 加载旋转动画 */
+@keyframes neonGlow {
+    0% { 
+        box-shadow: 0 0 10px #13FAED,
+                    inset 0 0 15px rgba(19,250,237,0.3);
+        opacity: 0.8;
+    }
+    100% { 
+        box-shadow: 0 0 25px #f831a9,
+                    inset 0 0 30px rgba(248,49,168,0.5);
+        opacity: 1;
+    }
+}
+
+/* 悬停特效 */
+.cyber-btn:hover {
+    transform: scale(1.15) rotate(12deg);
+    filter: 
+        drop-shadow(0 0 20px #f831a9)
+        brightness(1.2);
+}
+
+.cyber-btn:hover::before {
+    animation: neonFlash 0.8s infinite;
+}
+
+@keyframes neonFlash {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+
+/* 保持原有样式基础上新增 */
+.cyber-btn::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('music-wave.png') center/contain no-repeat;
+    opacity: 0;
+    animation: musicPulse 1.5s infinite;
+}
+
+.cyber-btn.playing::before {
+    opacity: 0.6;
+}
+
+@keyframes musicPulse {
+    0% { transform: scale(0.9); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(0.9); }
+}
